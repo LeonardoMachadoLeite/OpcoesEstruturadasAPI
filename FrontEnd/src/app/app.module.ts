@@ -10,13 +10,15 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 // import * as World from 'fusioncharts/maps/fusioncharts.world';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { SimuladorComponent } from './simulador/simulador.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SimuladorComponent
   ],
   imports: [
     BrowserModule,
