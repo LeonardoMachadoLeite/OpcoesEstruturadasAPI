@@ -1,4 +1,5 @@
-﻿using OpcoesEstruturadas.model;
+﻿using Newtonsoft.Json.Linq;
+using OpcoesEstruturadas.model;
 using OpcoesEstruturadasAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,19 @@ namespace OpcoesEstruturadasAPI.ServiceLayer
         //Output
         private Carteira carteira;
 
-        public ICollection<double> Simular(Simulacao simulacao)
+        public JObject Simular(Simulacao simulacao)
         {
             this.carteira = new Carteira();
             this.carteira.SetIntervaloPrecos(simulacao.Min, simulacao.Max, simulacao.Step);
             this.carteira.Operacoes = simulacao.Operacoes;
-            return this.carteira.Simulate();
+            JArray Data = this.carteira.Simulate();
+
+            JObject Response = new JObject(
+                new JProperty("chart", simulacao.ChartConfig),
+                new JProperty("data", Data)
+            );
+
+            return Response;
         }
 
     }

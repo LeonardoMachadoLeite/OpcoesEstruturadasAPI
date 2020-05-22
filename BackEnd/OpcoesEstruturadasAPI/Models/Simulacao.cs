@@ -13,6 +13,7 @@ namespace OpcoesEstruturadasAPI.Models
         public double Min { get; set; }
         public double Max { get; set; }
         public double Step { get; set; }
+        public string ChartConfig { get; set; }
         public IList<Operacao> Operacoes { get; set; }
 
     }

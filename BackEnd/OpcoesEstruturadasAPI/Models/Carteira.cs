@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,13 +13,13 @@ namespace OpcoesEstruturadas.model
         public IList<double> IntervaloPrecos { get; private set; }
 
         // Output
-        public IList<double> Resultado { get; private set; }
+        public JArray Resultado { get; private set; }
 
         public Carteira()
         {
             this.Operacoes = new List<Operacao>();
             this.IntervaloPrecos = new List<double>();
-            this.Resultado = new List<double>();
+            this.Resultado = new JArray();
         }
 
         public void SetIntervaloPrecos(double min, double max, double step)
@@ -52,13 +53,17 @@ namespace OpcoesEstruturadas.model
             return this.AddOperacao(operacao);
         }
 
-        public ICollection<double> Simulate()
+        public JArray Simulate()
         {
-            this.Resultado = new List<double>();
+            this.Resultado = new JArray();
             double custo = this.Custo();
             foreach (double preco in this.IntervaloPrecos)
             {
-                this.Resultado.Add(this.SpotResult(preco) - custo);
+                //this.SpotResult(preco) - custo
+                this.Resultado.Add(new JObject(
+                        new JProperty("label", preco.ToString()),
+                        new JProperty("value", (this.SpotResult(preco) - custo).ToString())
+                    ));
             }
             return this.Resultado;
         }

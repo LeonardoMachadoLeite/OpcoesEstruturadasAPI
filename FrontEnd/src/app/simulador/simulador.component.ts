@@ -14,6 +14,7 @@ export class SimuladorComponent implements OnInit {
       subcaption: "[2005-2016]",
       numbersuffix: " mph",
       rotatelabels: "1",
+	  // labelStep: "100",
       setadaptiveymin: "1",
       theme: "fusion"
     },
