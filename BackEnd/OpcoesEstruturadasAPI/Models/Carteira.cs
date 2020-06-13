@@ -9,29 +9,13 @@ namespace OpcoesEstruturadas.model
     {
 
         // Input
+        public string Nome { get; private set; }
         public IList<Operacao> Operacoes { get; set; }
-        public IList<double> IntervaloPrecos { get; private set; }
 
-        // Output
-        public JArray Resultado { get; private set; }
-
-        public Carteira()
+        public Carteira(string nome)
         {
+            this.Nome = nome;
             this.Operacoes = new List<Operacao>();
-            this.IntervaloPrecos = new List<double>();
-            this.Resultado = new JArray();
-        }
-
-        public void SetIntervaloPrecos(double min, double max, double step)
-        {
-            double endfor = max + step;
-            this.IntervaloPrecos = new List<double>();
-
-            for (double i = min; i < endfor; i += step)
-            {
-                this.IntervaloPrecos.Add(i);
-            }
-
         }
 
         public int AddOperacao(Operacao operacao)
@@ -53,19 +37,18 @@ namespace OpcoesEstruturadas.model
             return this.AddOperacao(operacao);
         }
 
-        public JArray Simulate()
+        public JArray Simulate(IntervaloPrecos intervaloPrecos)
         {
-            this.Resultado = new JArray();
+            JArray Resultado = new JArray();
             double custo = this.Custo();
-            foreach (double preco in this.IntervaloPrecos)
+            foreach (double preco in intervaloPrecos.ListPrecos)
             {
                 //this.SpotResult(preco) - custo
-                this.Resultado.Add(new JObject(
-                        new JProperty("label", preco.ToString()),
+                Resultado.Add(new JObject(
                         new JProperty("value", (this.SpotResult(preco) - custo).ToString())
                     ));
             }
-            return this.Resultado;
+            return Resultado;
         }
 
         public double SpotResult(double SpotPrice)

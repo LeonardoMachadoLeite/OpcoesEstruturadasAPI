@@ -11,18 +11,13 @@ namespace OpcoesEstruturadasAPI.ServiceLayer
     public class SimulacaoCarteiraService
     {
 
-        //Output
-        private Carteira carteira;
-
-        public JObject Simular(Simulacao simulacao)
+        public JObject SimularCarteira(Simulacao simulacao)
         {
-            this.carteira = new Carteira();
-            this.carteira.SetIntervaloPrecos(simulacao.Min, simulacao.Max, simulacao.Step);
-            this.carteira.Operacoes = simulacao.Operacoes;
-            JArray Data = this.carteira.Simulate();
+
+            JArray Data = simulacao.carteira.Simulate(simulacao.intervaloPrecos);
 
             JObject Response = new JObject(
-                new JProperty("chart", simulacao.ChartConfig),
+                new JProperty("seriesname", simulacao.carteira.Nome),
                 new JProperty("data", Data)
             );
 

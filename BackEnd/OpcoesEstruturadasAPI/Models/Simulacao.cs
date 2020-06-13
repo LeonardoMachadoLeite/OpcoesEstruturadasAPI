@@ -1,4 +1,5 @@
-﻿using OpcoesEstruturadas.model;
+﻿using Newtonsoft.Json.Linq;
+using OpcoesEstruturadas.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,8 @@ namespace OpcoesEstruturadasAPI.Models
     public class Simulacao
     {
 
-        public double Min { get; set; }
-        public double Max { get; set; }
-        public double Step { get; set; }
-        public string ChartConfig { get; set; }
-        public IList<Operacao> Operacoes { get; set; }
+        public IntervaloPrecos intervaloPrecos { get; set; }
+        public Carteira carteira { get; set; }
 
     }
 }

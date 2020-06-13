@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using OpcoesEstruturadasAPI.Models;
 using OpcoesEstruturadasAPI.ServiceLayer;
 
 namespace OpcoesEstruturadasAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Simulador")]
     public class SimuladorController : ControllerBase
     {
 
@@ -22,9 +23,10 @@ namespace OpcoesEstruturadasAPI.Controllers
         }
 
         [HttpGet]
-        public ICollection<double> Get([FromBody] Simulacao simulacao)
+        [Route("Carteira")]
+        public  JObject Get([FromBody] Simulacao simulacao)
         {
-            return this.service.Simular(simulacao);
+            return this.service.SimularCarteira(simulacao);
         }
     }
 }

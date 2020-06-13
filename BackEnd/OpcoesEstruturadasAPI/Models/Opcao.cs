@@ -30,22 +30,14 @@ namespace OpcoesEstruturadas.model
         }
 
         public Opcao(
-            string stockTicker, StrikeDeadline deadline, double strike,
+            string stockTicker, string ticker, StrikeDeadline deadline, double strike,
             DireitoCompraVenda operacao, TipoOpcao tipo) : base(stockTicker)
         {
+            this.Ticker = ticker;
             this.Deadline = deadline;
             this.Operacao = operacao;
             this.Tipo = tipo;
             this.Strike = strike;
-
-            if (operacao == DireitoCompraVenda.Call)
-            {
-                String.Format("%s%s%d", this.AcaoTicker.Substring(0, 4), this.Deadline.CallSymbol, (this.Strike*10));
-            }
-            else
-            {
-                String.Format("%s%s%d", this.AcaoTicker, this.Deadline.PutSymbol, (this.Strike * 10));
-            }
         }
 
         public override double IntrinsicValue(double SpotPrice)
