@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using OpcoesEstruturadasAPI.Models;
 using OpcoesEstruturadasAPI.ServiceLayer;
 
 namespace OpcoesEstruturadasAPI.Controllers
@@ -24,9 +23,22 @@ namespace OpcoesEstruturadasAPI.Controllers
 
         [HttpGet]
         [Route("Carteira")]
-        public  JObject Get([FromBody] Simulacao simulacao)
+        public  JObject GetCarteira([FromBody] JObject request)
         {
-            return this.service.SimularCarteira(simulacao);
+            return this.service.SimularCarteira(request);
         }
+
+        [HttpGet]
+        [Route("Carteiras")]
+        public JArray GetCarteiras([FromBody] JArray request)
+        {
+            JArray simulacoes = new JArray();
+            foreach (JObject carteira in request)
+            {
+                simulacoes.Add(this.service.SimularCarteira(carteira));
+            }
+            return simulacoes;
+        }
+
     }
 }

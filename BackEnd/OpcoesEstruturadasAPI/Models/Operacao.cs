@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,6 +20,31 @@ namespace OpcoesEstruturadas.model
         public int Quantidade { get; set; }
         public double Preco { get; set; }
 
+        public Operacao(JObject json)
+        {
+            this.Tipo = (TipoOperacao) Enum.ToObject(typeof(TipoOperacao), json.Value<int>("Tipo"));
+            this.Quantidade = json.Value<int>("Quantidade");
+            this.Preco = json.Value<double>("Preco");
+
+            JObject ativo = json.Value<JObject>("Ativo");
+
+            if (ativo.Value<int>("Opcao") == 1)
+            {
+                this.Ativo = new Opcao(
+                    ativo.Value<string>("StockTicker"),
+                    ativo.Value<string>("Ticker"),
+                    new StrikeDeadline(ativo.Value<string>("Deadline")),
+                    ativo.Value<double>("Strike"),
+                    ativo.Value<int>("DireitoCompraVenda"),
+                    ativo.Value<int>("TipoOpcao")
+                );
+            }
+            else
+            {
+                this.Ativo = new Acao(ativo.Value<string>("StockTicker"));
+            }
+            
+        }
         public Operacao(TipoOperacao tipo, Acao ativo)
         {
             this.Tipo = tipo;
@@ -28,7 +54,7 @@ namespace OpcoesEstruturadas.model
         public double Montar(int qtd, double preco)
         {
             this.Quantidade = qtd;
-            this.Preco = Preco;
+            this.Preco = preco;
             return this.Custo();
         }
 

@@ -43,10 +43,9 @@ namespace OpcoesEstruturadas.model
             double custo = this.Custo();
             foreach (double preco in intervaloPrecos.ListPrecos)
             {
-                //this.SpotResult(preco) - custo
                 Resultado.Add(new JObject(
                         new JProperty("value", (this.SpotResult(preco) - custo).ToString())
-                    ));
+                ));
             }
             return Resultado;
         }

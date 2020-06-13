@@ -13,31 +13,29 @@ namespace OpcoesEstruturadas.model
 
     public enum TipoOpcao
     {
-        Americana,
-        Europeia
+        Americana = 1,
+        Europeia = 0
     }
+
+    
 
     public class Opcao : Acao
     {
-
         public string Ticker { get; }
         public StrikeDeadline Deadline { get; }
         public DireitoCompraVenda Operacao { get; }
         public TipoOpcao Tipo { get; }
-        public double Strike { 
-            get { return Math.Round(Strike, 2); } 
-            private set { Strike=value; } 
-        }
+        public double Strike { get; private set; }
 
         public Opcao(
             string stockTicker, string ticker, StrikeDeadline deadline, double strike,
-            DireitoCompraVenda operacao, TipoOpcao tipo) : base(stockTicker)
+            int operacao, int tipo) : base(stockTicker)
         {
             this.Ticker = ticker;
             this.Deadline = deadline;
-            this.Operacao = operacao;
-            this.Tipo = tipo;
             this.Strike = strike;
+            this.Operacao = (DireitoCompraVenda) Enum.ToObject(typeof(DireitoCompraVenda), operacao);
+            this.Tipo = (TipoOpcao) Enum.ToObject(typeof(TipoOpcao), tipo);
         }
 
         public override double IntrinsicValue(double SpotPrice)
