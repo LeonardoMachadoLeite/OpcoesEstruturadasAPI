@@ -33,7 +33,7 @@ namespace OpcoesEstruturadas.model
             JArray category = new JArray();
 
             foreach (double preco in this.ListPrecos) {
-                category.Add(new JObject(new JProperty("label", preco)));
+                category.Add(new JObject(new JProperty("label", preco.ToString())));
             }
             
             JArray categories = new JArray();

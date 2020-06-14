@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using OpcoesEstruturadas.model;
 using OpcoesEstruturadasAPI.ServiceLayer;
 
 namespace OpcoesEstruturadasAPI.Controllers
@@ -38,6 +39,19 @@ namespace OpcoesEstruturadasAPI.Controllers
                 simulacoes.Add(this.service.SimularCarteira(carteira));
             }
             return simulacoes;
+        }
+
+        [HttpGet]
+        [Route("IntervaloPreco")]
+        public  JArray GetIntervaloPreco([FromBody] JObject request)
+        {
+            JObject intervalo = request.Value<JObject>("intervaloPrecos");
+            IntervaloPrecos intervaloPrecos = new IntervaloPrecos(
+                intervalo.Value<double>("Min"),
+                intervalo.Value<double>("Max"),
+                intervalo.Value<double>("Step")
+            );
+            return intervaloPrecos.GetxAxis();
         }
 
     }

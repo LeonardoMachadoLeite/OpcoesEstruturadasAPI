@@ -10,92 +10,218 @@ export class SimuladorComponent implements OnInit {
   data = {
     chart: {
       caption: 'Simulação de Estratégia de Opções',
-      yaxisname: 'Patrimonio Resultante',
+      yaxisname: 'Resultado',
       xaxisname: 'Preço da Ação',
       numdivlines: '3',
-      showvalues: '1',
+      showvalues: '0',
       legenditemfontsize: '15',
       legenditemfontbold: '1',
-      plottooltext: '<b>$dataValue</b> Tickets $seriesName on $label',
+      plottooltext: '$seriesName em $label: <b>$dataValue</b>',//'<b>$dataValue</b> Tickets $seriesName on $label',
       theme: 'fusion'
     },
     categories: [
       {
         category: [
           {
-            label: 'Jan 1'
+            label: '10'
           },
           {
-            label: 'Jan 2'
+            label: '11'
           },
           {
-            label: 'Jan 3'
+            label: '12'
           },
           {
-            label: 'Jan 4'
+            label: '13'
           },
           {
-            label: 'Jan 5'
+            label: '14'
           },
           {
-            label: 'Jan 6'
+            label: '15'
           },
           {
-            label: 'Jan 7'
+            label: '16'
+          },
+          {
+            label: '17'
+          },
+          {
+            label: '18'
+          },
+          {
+            label: '19'
+          },
+          {
+            label: '20'
+          },
+          {
+            label: '21'
+          },
+          {
+            label: '22'
+          },
+          {
+            label: '23'
+          },
+          {
+            label: '24'
+          },
+          {
+            label: '25'
+          },
+          {
+            label: '26'
+          },
+          {
+            label: '27'
+          },
+          {
+            label: '28'
+          },
+          {
+            label: '29'
+          },
+          {
+            label: '30'
           }
         ]
       }
     ],
     dataset: [
       {
-        seriesname: 'Carteira 1',
+        seriesname: 'Carteira 01',
         data: [
           {
-            value: '55'
+            value: '820'
           },
           {
-            value: '45'
+            value: '720'
           },
           {
-            value: '52'
+            value: '620'
           },
           {
-            value: '29'
+            value: '520'
           },
           {
-            value: '48'
+            value: '420'
           },
           {
-            value: '28'
+            value: '320'
           },
           {
-            value: '32'
+            value: '220'
+          },
+          {
+            value: '120'
+          },
+          {
+            value: '20'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
+          },
+          {
+            value: '-70'
           }
         ]
       },
       {
-        seriesname: 'Carteira 2',
+        seriesname: 'Carteira 02',
         data: [
           {
-            value: '50'
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-180'
+          },
+          {
+            value: '-170'
+          },
+          {
+            value: '-70'
           },
           {
             value: '30'
           },
           {
-            value: '49'
+            value: '130'
           },
           {
-            value: '22'
+            value: '230'
           },
           {
-            value: '43'
+            value: '330'
           },
           {
-            value: '14'
+            value: '430'
           },
           {
-            value: '31'
+            value: '530'
+          },
+          {
+            value: '630'
+          },
+          {
+            value: '730'
+          },
+          {
+            value: '830'
+          },
+          {
+            value: '930'
           }
         ]
       }
