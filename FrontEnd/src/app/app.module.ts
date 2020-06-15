@@ -11,6 +11,9 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 // import * as World from 'fusioncharts/maps/fusioncharts.world';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { SimuladorComponent } from './simulador/simulador.component';
+import { TabelaOpcoesComponent } from './tabela-opcoes/tabela-opcoes.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OpcoesService } from './services/opcoes.service';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -18,14 +21,16 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 @NgModule({
   declarations: [
     AppComponent,
-    SimuladorComponent
+    SimuladorComponent,
+    TabelaOpcoesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FusionChartsModule
+    FusionChartsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OpcoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

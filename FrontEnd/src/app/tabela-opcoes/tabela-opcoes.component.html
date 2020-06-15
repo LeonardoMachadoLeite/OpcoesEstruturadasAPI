@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        <div class="float-left">
+            <h4>Produtos</h4>
+        </div>
+        <div class="float-right">
+            <a class="btn btn-secondary" href="cadastro">Cadastro</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Strike</th>
+                        <th>Preço</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let opcao of opcoes.opcaoScrapper">
+                        <td>{{opcao.Ticker}}</td>
+                        <td>{{opcao.Strike}} </td>
+                        <td>{{opcao.Premio}}</td>
+                        <td>
+                            <span class="float-right">
+                                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(produto.id)"> +
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
