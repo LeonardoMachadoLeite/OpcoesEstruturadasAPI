@@ -1,0 +1,18 @@
+<div class="col-lg-4 op-item">
+  <div class="card h-100">
+    <div class="card-body">
+      <label class="card-title">{{ opcao.Ticker }}</label>
+      <button class="btn btn-danger remover" (click)="onClickRemover()">x</button>
+      <br>
+      <label>Strike: R$ {{ opcao.Strike }}</label>
+      <br>
+      <label>Preço: R$ {{ operacao.Preco }}.00</label>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-danger menos" (click)="onClickMenos()">-</button>
+      <label class="qtd">{{ operacao.Quantidade.toString() }}</label>
+      <button class="btn btn-success mais" (click)="onClickMais()">+</button>
+    </div>
+  </div>
+</div>
