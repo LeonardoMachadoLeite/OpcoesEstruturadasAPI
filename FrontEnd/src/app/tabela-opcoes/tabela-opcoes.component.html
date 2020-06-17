@@ -19,13 +19,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let opcao of opcoes.opcaoScrapper">
-                        <td>{{opcao.Ticker}}</td>
-                        <td>{{opcao.Strike}} </td>
-                        <td>{{opcao.Premio}}</td>
+                    <tr *ngFor="let opcao of opcoes">
+                        <td>{{ opcao.SERIE }}</td>
+                        <td>{{ opcao.STRIKE }} </td>
+                        <td>{{ opcao.PREMIO }}</td>
                         <td>
                             <span class="float-right">
-                                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(produto.id)"> +
+                                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(opcao)"> +
                                 </button>
                             </span>
                         </td>

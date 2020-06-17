@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { delay, take } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base.service';
-import { Call } from '../model/call.model';
+import { OpcaoScrapper } from '../model/opcao-scrapper.model';
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +9,18 @@ import { Call } from '../model/call.model';
 export class OpcoesService extends BaseService {
 
     constructor(http: HttpClient) {
-        super(http, '/')
+        super(http);
     }
 
-    obterOpcoes() {
-        return this.http.get<Call[]>(this.apiScrapperrUrl);
+    obterOpcoes(tipo: string, vencimento: string) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        })
+      };
+      const body = {tipo, vencimento};
+      return this.http.post<Array<OpcaoScrapper>>('/scrapper_url/Scrapper/Opcoes', body, httpOptions);
     }
 
 }

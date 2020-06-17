@@ -1,12 +1,12 @@
-export class opcaoScrapper{
-    Estilo: string;
-    Serie: string;
-    Vencimento: Date;
-    Strike: string;
-    Premio: string;
-    Coberto: number;
-    Trava: number;
-    Descoberto: number;
-    Titular: number;
-    Lancador: number;
+export class OpcaoScrapper{
+    ESTILO: string;
+    SERIE: string;
+    VENCIMENTO: Date;
+    STRIKE: string;
+    PREMIO: string;
+    COBERTO: number;
+    TRAVA: number;
+    DESCOBERTO: number;
+    TITULAR: number;
+    LANCADOR: number;
 }

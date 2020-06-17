@@ -5,14 +5,14 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BaseService {
-    protected apiScrapperrUrl;
+    protected apiScrapperUrl;
     protected apiSimuladorUrl;
 
-    private readonly urlScrapper: ' http://localhost:53231/Opcoes/Get/All';
-    private readonly urlSimuladorApi: 'http://localhost:56972/Simulador/Carteira';
+    private readonly urlScrapper = ' https://localhost:44343';
+    private readonly urlSimuladorApi = 'https://localhost:56972';
 
-    constructor(protected http: HttpClient, rota: string) {
-        this.apiScrapperrUrl = this.urlScrapper;
-        this.apiSimuladorUrl = this.urlSimuladorApi + rota;
+    constructor(protected http: HttpClient) {
+        this.apiScrapperUrl = this.urlScrapper;
+        this.apiSimuladorUrl = this.urlSimuladorApi;
     }
 }

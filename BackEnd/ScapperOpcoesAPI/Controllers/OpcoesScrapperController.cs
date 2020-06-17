@@ -14,12 +14,13 @@ namespace ScapperOpcoesAPI.Controllers
     public class OpcoesScrapperController : ControllerBase
     {
 
-        [HttpGet]
+        [HttpPost]
         [Route("Get/All")]
-        public async Task<JObject> GetOpcoes()
+        public async Task<JObject> GetOpcoes([FromBody] JObject body)
         {
             ScrapperOpcoesService service = new ScrapperOpcoesService("https://statusinvest.com.br/opcoes/petr4");
-            return await service.GetOpcoes();
+            JObject opcoes = await service.GetOpcoes();
+            
         }
     }
 }
