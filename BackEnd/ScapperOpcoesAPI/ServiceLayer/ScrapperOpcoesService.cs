@@ -71,6 +71,28 @@ namespace ScapperOpcoesAPI.ServiceLayer
             return list;
         }
 
+        private JArray AdaptarVencimentosArray(IHtmlCollection<IElement> titles)
+        {
+            JArray list = new JArray();
+            foreach (IElement title in titles)
+            {
+                list.Add(title.TextContent.ToString().Split("\n")[2]);
+            }
+            return list;
+        }
+
+        public async Task<JArray> GetVencimentosCall()
+        {
+            IHtmlDocument document = await this.GetHtmlDocument();
+            return AdaptarVencimentosArray(GetVencimentosCalls(document));
+        }
+
+        public async Task<JArray> GetVencimentosPut()
+        {
+            IHtmlDocument document = await this.GetHtmlDocument();
+            return AdaptarVencimentosArray(GetVencimentosPuts(document));
+        }
+
         public async Task<JObject> GetOpcoes()
         {
             IHtmlDocument document = await this.GetHtmlDocument();
@@ -121,10 +143,10 @@ namespace ScapperOpcoesAPI.ServiceLayer
 
                 opcao = new JObject(
                     new JProperty("ESTILO", valores[0]),
-                    new JProperty("SÉRIE", valores[1]),
+                    new JProperty("SERIE", valores[1]),
                     new JProperty("VENCIMENTO", vencimentos[vencimentoIndex]),
                     new JProperty("STRIKE", valores[2]),
-                    new JProperty("PRÊMIO", valores[3]),
+                    new JProperty("PREMIO", valores[3]),
                     new JProperty("COBERTO", valores[4]),
                     new JProperty("TRAVA", valores[5]),
                     new JProperty("DESCOBERTO", valores[6]),

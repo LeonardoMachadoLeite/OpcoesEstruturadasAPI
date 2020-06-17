@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OpcoesService } from './services/opcoes.service';
 import { OperacaoControllerComponent } from './operacao/operacao-controller/operacao-controller.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListaOperacoesComponent } from './operacao/lista-operacoes/lista-operacoes.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -25,7 +26,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     AppComponent,
     SimuladorComponent,
     TabelaOpcoesComponent,
-    OperacaoControllerComponent
+    OperacaoControllerComponent,
+    ListaOperacoesComponent
   ],
   imports: [
     BrowserModule,
