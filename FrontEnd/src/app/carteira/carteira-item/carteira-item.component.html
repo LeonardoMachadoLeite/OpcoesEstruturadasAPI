@@ -1,0 +1,10 @@
+<div class="col-lg-4 op-item">
+  <div class="card h-100">
+    <form class="card-body">
+      <input [(ngModel)]="carteira.Nome" name="Nome Carteira" class="campo-nome">
+      <button class="btn btn-danger remover" (click)="onClickRemover()">x</button>
+      <br>
+      <button class="btn btn-primary editar-btn" (click)="onClickEditar()">Editar</button>
+    </form>
+  </div>
+</div>

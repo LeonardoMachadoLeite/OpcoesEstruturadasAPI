@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,6 +18,8 @@ import { OpcoesService } from './services/opcoes.service';
 import { OperacaoControllerComponent } from './operacao/operacao-controller/operacao-controller.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListaOperacoesComponent } from './operacao/lista-operacoes/lista-operacoes.component';
+import { CarteiraItemComponent } from './carteira/carteira-item/carteira-item.component';
+import { ListaCarteirasComponent } from './carteira/lista-carteiras/lista-carteiras.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -27,10 +30,13 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SimuladorComponent,
     TabelaOpcoesComponent,
     OperacaoControllerComponent,
-    ListaOperacoesComponent
+    ListaOperacoesComponent,
+    CarteiraItemComponent,
+    ListaCarteirasComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     FusionChartsModule,
     HttpClientModule,

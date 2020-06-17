@@ -1,3 +1,4 @@
+import { Carteira } from './model/carteira';
 import { Component } from '@angular/core';
 import { Operacao } from './model/operacao';
 import { Opcao } from './model/opcao';
@@ -9,6 +10,14 @@ import { Opcao } from './model/opcao';
 })
 export class AppComponent {
 
+  carteira: Carteira = {
+    Nome: 'Carteira 1',
+    Operacoes: []
+  };
+  carteiras: Array<Carteira> = [
+    this.carteira,
+    this.carteira
+  ];
   opcao: Opcao = {
     Opcao: 1,
     StockTicker: 'PETR4',
