@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using ScapperOpcoesAPI.ServiceLayer;
+using ScrapperOpcoesAPI.ServiceLayer;
 
-namespace ScapperOpcoesAPI.Controllers
+namespace ScrapperOpcoesAPI.Controllers
 {
     [ApiController]
     [Route("Scrapper")]

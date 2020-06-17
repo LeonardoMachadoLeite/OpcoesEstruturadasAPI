@@ -1,7 +1,7 @@
 export class OpcaoScrapper{
     ESTILO: string;
     SERIE: string;
-    VENCIMENTO: Date;
+    VENCIMENTO: string;
     STRIKE: string;
     PREMIO: string;
     COBERTO: number;

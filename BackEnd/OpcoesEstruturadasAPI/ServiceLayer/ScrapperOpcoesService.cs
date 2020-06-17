@@ -12,7 +12,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ScapperOpcoesAPI.ServiceLayer
+namespace ScrapperOpcoesAPI.ServiceLayer
 {
     public class ScrapperOpcoesService
     {

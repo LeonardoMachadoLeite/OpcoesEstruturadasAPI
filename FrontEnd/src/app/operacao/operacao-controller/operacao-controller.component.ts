@@ -1,3 +1,4 @@
+import { OpcaoScrapper } from './../../model/opcao-scrapper.model';
 import { Operacao } from './../../model/operacao';
 import { Opcao } from './../../model/opcao';
 import { Component, OnInit, Input } from '@angular/core';
@@ -9,6 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OperacaoControllerComponent implements OnInit {
 
+  @Input() StockTicker: string = 'PETR4';
+  @Input() opcaoScrapper: OpcaoScrapper;
   opcao: Opcao = {
     Opcao: 1,
     StockTicker: 'PETR4',
@@ -28,6 +31,23 @@ export class OperacaoControllerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (this.opcaoScrapper != null) {
+      this.opcao = {
+        Opcao: 1,
+        StockTicker: this.StockTicker,
+        Ticker: this.opcaoScrapper.SERIE,
+        Deadline: this.opcaoScrapper.VENCIMENTO,
+        Strike: this.cvtString(this.opcaoScrapper.STRIKE),
+        DireitoCompraVenda: 1,
+        TipoOpcao: 1
+      };
+      this.operacao = {
+        Tipo: 1,
+        Quantidade: 0,
+        Preco: 40.0,
+        Ativo: this.opcao
+      }
+    }
   }
 
   onClickMais() {
@@ -40,6 +60,12 @@ export class OperacaoControllerComponent implements OnInit {
 
   onClickRemover() {
 
+  }
+
+  cvtString(str: string) {
+    var res = str.substring(3);
+    res = res.replace(',', '.');
+    return Number(res);
   }
 
 }
