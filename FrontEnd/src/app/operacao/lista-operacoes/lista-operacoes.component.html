@@ -1,1 +1,5 @@
-<p>lista-operacoes works!</p>
+<div>
+  <div *ngFor="let operacao of operacoes" >
+    <app-operacao-controller [StockTicker]="StockTicker" [operacao]="operacao" [opcao]="operacao.Ativo"></app-operacao-controller>
+  </div>
+</div>
