@@ -2,17 +2,26 @@
 
   <app-cabecalho></app-cabecalho>
 
-  <div>
+  <div class="content-fluid">
     <app-intervalo-precos-card></app-intervalo-precos-card>
-    <app-simulador></app-simulador>
     <td>
-      <app-lista-carteiras [carteiras]="carteiras"></app-lista-carteiras>
+      <div>
+
+        <app-lista-carteiras style="float: left;" [carteiras]="carteiras"></app-lista-carteiras>
+
+      </div>
+    </td>
+    <td style="padding-bottom: 5%; padding-top: 2% !important;">
+      <div >
+        <app-simulador ></app-simulador>
+      </div>
     </td>
     <td>
-      <app-simulador></app-simulador>
-    </td>
-    <td>
-      <app-lista-operacoes [operacoes]="operacoes"></app-lista-operacoes>
+      <div>
+
+        <app-lista-operacoes style="margin-top:5%; float: right;" [operacoes]="operacoes"></app-lista-operacoes>
+
+      </div>
     </td>
   </div>
 
