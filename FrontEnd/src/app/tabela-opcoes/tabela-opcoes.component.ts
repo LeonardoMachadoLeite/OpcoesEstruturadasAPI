@@ -19,7 +19,7 @@ export class TabelaOpcoesComponent implements OnInit {
   constructor(private http: HttpClient, private opcoesService: OpcoesService) { }
 
   ngOnInit(): void {
-    //this.opcoesService.obterOpcoes(this.tipo, this.vencimento).subscribe(res => this.opcoes = res);
+    this.opcoesService.obterOpcoes(this.tipo, this.vencimento).subscribe(res => this.opcoes = res);
   }
 
   onEdit(opcao: OpcaoScrapper): void {

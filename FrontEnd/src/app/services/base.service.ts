@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 export class BaseService {
     protected urlApi;
 
-    private readonly apiUrl  = 'http://localhost:56972/';
+    private readonly apiUrl  = 'http://localhost:56972';
 
     constructor(protected http: HttpClient) {
         this.urlApi = this.apiUrl;

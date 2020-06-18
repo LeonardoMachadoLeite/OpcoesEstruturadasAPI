@@ -27,7 +27,7 @@ namespace OpcoesEstruturadasAPI
         {
             services.AddCors(options => {
                 options.AddPolicy("MyApiPolicy", builder => builder
-                .WithOrigins("http://localhost:4200/")
+                .WithOrigins("http://localhost:4200")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials());
@@ -44,12 +44,14 @@ namespace OpcoesEstruturadasAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("MyApiPolicy");
-
             //app.UseHttpsRedirection();
-            app.UseAuthorization();
 
             app.UseRouting();
+
+            app.UseCors("MyApiPolicy");
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers().RequireCors("MyApiPolicy");

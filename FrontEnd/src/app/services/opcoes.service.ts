@@ -16,7 +16,7 @@ export class OpcoesService extends BaseService {
       const httpOptions = {
          headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:56972/'
+          'Access-Control-Allow-Origin': 'http://localhost:56972'
         })
       };
       const body = {tipo, vencimento};
