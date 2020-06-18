@@ -20,6 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListaOperacoesComponent } from './operacao/lista-operacoes/lista-operacoes.component';
 import { CarteiraItemComponent } from './carteira/carteira-item/carteira-item.component';
 import { ListaCarteirasComponent } from './carteira/lista-carteiras/lista-carteiras.component';
+import { IntervaloPrecosCardComponent } from './intervalo-precos/intervalo-precos-card/intervalo-precos-card.component';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -32,7 +34,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     OperacaoControllerComponent,
     ListaOperacoesComponent,
     CarteiraItemComponent,
-    ListaCarteirasComponent
+    ListaCarteirasComponent,
+    IntervaloPrecosCardComponent,
+    CabecalhoComponent
   ],
   imports: [
     BrowserModule,
