@@ -54,6 +54,9 @@ export class AppComponent {
   DireitoCompraVenda: number = 0;
   StockTicker: string = 'PETR4';
   Vencimento: string = '20/07/2020';
+  listaVencimentos = [];
+  listaTickers = [this.StockTicker];
+  listaTipos = [];
   carteiras: Array<Carteira> = [
     this.carteira1,
     this.carteira2
@@ -291,10 +294,10 @@ export class AppComponent {
       }
     ]
   };
-
-  private readonly TiposOpcoes = ['call', 'put'];
+  TiposOpcoes = ['call', 'put'];
 
   constructor(private opcoesService: OpcoesService, private simuladorService: SimuladorService) {
+    this.opcoesService.getVencimentos().subscribe(res => this.listaVencimentos = res);
     this.opcoesService.obterOpcoes(this.TiposOpcoes[this.DireitoCompraVenda], this.Vencimento).subscribe(res => this.opcoesScrapper = res);
   }
 

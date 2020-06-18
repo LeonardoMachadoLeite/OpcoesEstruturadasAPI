@@ -1,17 +1,17 @@
 <div class="content-fluid">
     <td>
         <select>
-            <option *ngFor="let option of options" value="Ticker">{{option.SERIE}}</option>
+            <option *ngFor="let option of listaTickers" value="Ticker">{{option}}</option>
         </select>
     </td>
     <td>
         <select>
-            <option *ngFor="let option of options" value="tipoOpcao">{{option.LANCADOR}}</option>
+            <option *ngFor="let option of listaTipos" value="tipoOpcao">{{option}}</option>
         </select>
     </td>
     <td>
         <select>
-            <option *ngFor="let option of options" value="Vencimento">{{option.VENCIMENTO}}</option>
+            <option *ngFor="let option of listaVencimentos" value="Vencimento">{{option}}</option>
         </select>
     </td>
 </div>

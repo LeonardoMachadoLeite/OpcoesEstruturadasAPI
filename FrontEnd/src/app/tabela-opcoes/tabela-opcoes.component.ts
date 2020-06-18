@@ -10,6 +10,10 @@ import { OpcaoScrapper } from '../model/opcao-scrapper.model';
 })
 export class TabelaOpcoesComponent implements OnInit {
 
+  @Input() listaTipos: Array<string>;
+  @Input() listaVencimentos: Array<string>;
+  @Input() listaTickers: Array<string>;
+
   @Input() opcoes: Array<OpcaoScrapper> = [];
 
   @Output() adicionarOperacao = new EventEmitter();

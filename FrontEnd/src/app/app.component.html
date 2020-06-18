@@ -24,7 +24,7 @@
       </div>
     </td>
   </div>
-<app-filtro-tabela></app-filtro-tabela>
-  <app-tabela-opcoes [opcoes]="opcoesScrapper" (adicionarOperacao)="adicionarOperacao($event)"></app-tabela-opcoes>
+  <app-tabela-opcoes [opcoes]="opcoesScrapper" (adicionarOperacao)="adicionarOperacao($event)"
+    [listaTickers]="listaTickers" [listaTipos]="TiposOpcoes" [listaVencimentos]="listaVencimentos"></app-tabela-opcoes>
 
 </body>
