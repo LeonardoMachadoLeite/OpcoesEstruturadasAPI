@@ -1,5 +1,6 @@
 <div>
   <div *ngFor="let carteira of carteiras">
-    <app-carteira-item [carteira]="carteira"></app-carteira-item>
+    <app-carteira-item (RemoverCarteira)="removerCarteira($event)"
+      (GetCarteira)="getCarteira($event)" [carteira]="carteira"></app-carteira-item>
   </div>
 </div>

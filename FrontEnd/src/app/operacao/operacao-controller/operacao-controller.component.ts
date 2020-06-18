@@ -1,7 +1,7 @@
+import { Operacao } from 'src/app/model/operacao';
 import { OpcaoScrapper } from './../../model/opcao-scrapper.model';
-import { Operacao } from './../../model/operacao';
 import { Opcao } from './../../model/opcao';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-operacao-controller',
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OperacaoControllerComponent implements OnInit {
 
   @Input() StockTicker: string = 'PETR4';
-  @Input() opcao: Opcao = {
+  opcao: Opcao = {
     Opcao: 1,
     StockTicker: 'PETR4',
     Ticker: 'PETRS189',
@@ -26,6 +26,7 @@ export class OperacaoControllerComponent implements OnInit {
     Preco: 40.0,
     Ativo: this.opcao
   };
+  @Output() removerOperacao = new EventEmitter();
 
   constructor() { }
 
@@ -39,14 +40,8 @@ export class OperacaoControllerComponent implements OnInit {
     this.operacao.Quantidade -= 100;
   }
 
-  onClickRemover() {
-
-  }
-
-  cvtString(str: string) {
-    var res = str.substring(3);
-    res = res.replace(',', '.');
-    return Number(res);
+  onClickRemover(evento) {
+    this.removerOperacao.emit({ operacao: this.operacao });
   }
 
 }

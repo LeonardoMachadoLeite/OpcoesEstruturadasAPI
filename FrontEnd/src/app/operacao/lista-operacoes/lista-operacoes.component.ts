@@ -1,5 +1,5 @@
 import { OperacaoControllerComponent } from './../operacao-controller/operacao-controller.component';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Operacao } from 'src/app/model/operacao';
 
 @Component({
@@ -15,6 +15,12 @@ export class ListaOperacoesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  removerOperacao(evento) {
+    console.log('remover operacao');
+    this.operacoes = this.operacoes.filter(item => item.Ativo !== evento.operacao.Ativo);
+    console.log(this.operacoes);
   }
 
 }

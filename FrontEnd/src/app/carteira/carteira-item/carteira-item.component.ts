@@ -1,5 +1,5 @@
 import { Carteira } from './../../model/carteira';
-import { Component, OnInit, Input, NgModule } from '@angular/core';
+import { Component, OnInit, Input, NgModule, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-carteira-item',
@@ -9,6 +9,8 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
 export class CarteiraItemComponent implements OnInit {
 
   @Input() carteira: Carteira;
+  @Output() GetCarteira = new EventEmitter();
+  @Output() RemoverCarteira = new EventEmitter();
 
   constructor() { }
 
@@ -16,11 +18,11 @@ export class CarteiraItemComponent implements OnInit {
   }
 
   onClickEditar() {
-
+    this.GetCarteira.emit({ carteira: this.carteira });
   }
 
   onClickRemover() {
-
+    this.RemoverCarteira.emit({ carteira: this.carteira });
   }
 
 }

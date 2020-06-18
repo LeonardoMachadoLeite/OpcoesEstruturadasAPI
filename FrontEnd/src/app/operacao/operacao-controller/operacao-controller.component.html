@@ -2,7 +2,7 @@
   <div class="card h-100">
     <div class="card-body">
       <label class="card-title">{{ opcao.Ticker }}</label>
-      <button class="btn btn-danger remover" (click)="onClickRemover()">x</button>
+      <button class="btn btn-danger remover" (click)="onClickRemover($event)">x</button>
       <br>
       <label>Strike: R$ {{ opcao.Strike }}</label>
       <br>
