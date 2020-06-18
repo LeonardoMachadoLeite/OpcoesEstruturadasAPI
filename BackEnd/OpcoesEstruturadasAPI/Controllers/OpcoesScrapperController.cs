@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
@@ -9,6 +10,7 @@ using ScrapperOpcoesAPI.ServiceLayer;
 
 namespace ScrapperOpcoesAPI.Controllers
 {
+    [EnableCors("MyApiPolicy")]
     [ApiController]
     [Route("Scrapper")]
     public class OpcoesScrapperController : ControllerBase

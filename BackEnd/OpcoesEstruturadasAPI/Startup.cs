@@ -25,6 +25,13 @@ namespace OpcoesEstruturadasAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy("MyApiPolicy", builder => builder
+                .WithOrigins("http://localhost:4200/")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
+            });
             services.AddControllers();
             services.AddMvc().AddNewtonsoftJson();
         }
@@ -37,15 +44,15 @@ namespace OpcoesEstruturadasAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors("MyApiPolicy");
 
-            app.UseRouting();
-
+            //app.UseHttpsRedirection();
             app.UseAuthorization();
 
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireCors("MyApiPolicy");
             });
         }
     }
