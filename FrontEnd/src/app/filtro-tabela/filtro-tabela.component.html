@@ -1,0 +1,17 @@
+<div class="content-fluid">
+    <td>
+        <select>
+            <option *ngFor="let option of options" value="Ticker">{{option.SERIE}}</option>
+        </select>
+    </td>
+    <td>
+        <select>
+            <option *ngFor="let option of options" value="tipoOpcao">{{option.LANCADOR}}</option>
+        </select>
+    </td>
+    <td>
+        <select>
+            <option *ngFor="let option of options" value="Vencimento">{{option.VENCIMENTO}}</option>
+        </select>
+    </td>
+</div>
