@@ -20,7 +20,7 @@ export class OpcoesService extends BaseService {
         })
       };
       const body = {tipo, vencimento};
-      return this.http.post<Array<OpcaoScrapper>>('/scrapper_url/Scrapper/Opcoes', body, httpOptions);
+      return this.http.post<Array<OpcaoScrapper>>(this.urlApi + '/Scrapper/Opcoes', body, httpOptions);
     }
 
 }
