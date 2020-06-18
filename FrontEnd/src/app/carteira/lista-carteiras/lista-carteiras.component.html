@@ -1,4 +1,4 @@
-<div>
+<div class="card-body">
   <div *ngFor="let carteira of carteiras">
     <app-carteira-item (RemoverCarteira)="removerCarteira($event)"
       (GetCarteira)="getCarteira($event)" [carteira]="carteira"></app-carteira-item>

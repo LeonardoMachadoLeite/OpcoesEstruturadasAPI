@@ -4,7 +4,8 @@ import { Component, OnInit, Input, NgModule, Output, EventEmitter } from '@angul
 @Component({
   selector: 'app-carteira-item',
   templateUrl: './carteira-item.component.html',
-  styleUrls: ['./carteira-item.component.scss']
+  styleUrls: ['./carteira-item.component.scss'],
+  preserveWhitespaces: true
 })
 export class CarteiraItemComponent implements OnInit {
 
