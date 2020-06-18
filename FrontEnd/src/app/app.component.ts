@@ -4,6 +4,7 @@ import { Carteira } from './model/carteira';
 import { Component } from '@angular/core';
 import { Operacao } from './model/operacao';
 import { Opcao } from './model/opcao';
+import { OpcoesService } from './services/opcoes.service';
 
 @Component({
   selector: 'app-root',
@@ -43,16 +44,20 @@ export class AppComponent {
   };
 
   title = 'Simulador de Opções Estruturadas';
-  DireitoCompraVenda: number;
-  StockTicker: string;
+  DireitoCompraVenda: number = 0;
+  StockTicker: string = 'PETR4';
+  Vencimento: string = '20/07/2020';
   carteiras: Array<Carteira> = [
     this.carteira1,
     this.carteira2
   ];
   operacoes: Array<Operacao> = [];
+  opcoesScrapper: Array<OpcaoScrapper> = [];
 
-  constructor() {
+  private readonly TiposOpcoes = ['call', 'put'];
 
+  constructor(private opcoesService: OpcoesService) {
+    this.opcoesService.obterOpcoes(this.TiposOpcoes[this.DireitoCompraVenda], this.Vencimento).subscribe(res => this.opcoesScrapper = res);
   }
 
   cvtString(str: string) {
@@ -66,8 +71,9 @@ export class AppComponent {
   }
 
   adicionarOperacao(evento) {
-    const opcao: OpcaoScrapper = evento.opcao;
-    const ativo: Opcao = {
+    let opcao: OpcaoScrapper = evento.opcao;
+    console.log(opcao);
+    let ativo: Opcao = {
       Opcao: 1,
       StockTicker: this.StockTicker,
       Ticker: opcao.SERIE,

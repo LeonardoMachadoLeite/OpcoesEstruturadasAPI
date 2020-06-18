@@ -1,3 +1,4 @@
+import { Acao } from './../../model/acao';
 import { Operacao } from 'src/app/model/operacao';
 import { OpcaoScrapper } from './../../model/opcao-scrapper.model';
 import { Opcao } from './../../model/opcao';
@@ -42,6 +43,10 @@ export class OperacaoControllerComponent implements OnInit {
 
   onClickRemover(evento) {
     this.removerOperacao.emit({ operacao: this.operacao });
+  }
+
+  cvtOpcao(acao: Acao) {
+    return acao as Opcao;
   }
 
 }

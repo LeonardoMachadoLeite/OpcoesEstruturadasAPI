@@ -1,12 +1,12 @@
 <div class="op-item">
   <div class="card h-100">
     <div class="card-body">
-      <label class="card-title">{{ opcao.Ticker }}</label>
+      <label class="card-title">{{ cvtOpcao(operacao.Ativo).Ticker }}</label>
       <button class="btn btn-danger remover" (click)="onClickRemover($event)">x</button>
       <br>
-      <label>Strike: R$ {{ opcao.Strike }}</label>
+      <label>Strike: R$ {{ cvtOpcao(operacao.Ativo).Strike }}</label>
       <br>
-      <label>Preço: R$ {{ operacao.Preco }}.00</label>
+      <label>Preço: R$ {{ operacao.Preco }}</label>
     </div>
 
     <div class="card-footer">

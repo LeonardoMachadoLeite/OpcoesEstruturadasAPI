@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OpcoesService } from '../services/opcoes.service';
 import { OpcaoScrapper } from '../model/opcao-scrapper.model';
@@ -10,19 +10,15 @@ import { OpcaoScrapper } from '../model/opcao-scrapper.model';
 })
 export class TabelaOpcoesComponent implements OnInit {
 
-  tipo: string = 'call';
-  vencimento: string = '20/07/2020';
+  @Input() opcoes: Array<OpcaoScrapper> = [];
 
-  vencimentos: Array<string> = [];
-  opcoes: Array<OpcaoScrapper> = [];
+  @Output() adicionarOperacao = new EventEmitter();
 
   constructor(private http: HttpClient, private opcoesService: OpcoesService) { }
 
-  ngOnInit(): void {
-    this.opcoesService.obterOpcoes(this.tipo, this.vencimento).subscribe(res => this.opcoes = res);
-  }
+  ngOnInit(): void {}
 
   onEdit(opcao: OpcaoScrapper): void {
-
+    this.adicionarOperacao.emit({ opcao });
   }
 }
