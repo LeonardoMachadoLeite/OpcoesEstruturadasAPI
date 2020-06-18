@@ -1,10 +1,10 @@
 <div class="card">
     <div class="card-header">
         <div class="float-left">
-            <h4>Produtos</h4>
+            <h4>Opções</h4>
         </div>
         <div class="float-right">
-            <a class="btn btn-secondary" href="cadastro">Cadastro</a>
+            <!-- <a class="btn btn-secondary" href="cadastro">Cadastro</a> -->
         </div>
     </div>
     <div class="card-body">
@@ -12,23 +12,25 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Actions</th>
                         <th>Ticker</th>
                         <th>Strike</th>
                         <th>Preço</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let opcao of opcoes">
-                        <td>{{ opcao.SERIE }}</td>
-                        <td>{{ opcao.STRIKE }} </td>
-                        <td>{{ opcao.PREMIO }}</td>
-                        <td>
-                            <span class="float-right">
-                                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(opcao)"> +
-                                </button>
-                            </span>
-                        </td>
+                    <td>
+                        <span class="float-center">
+                            <button class="btn btn-outline-primary mb-1 btn-sm" (click)="onEdit(opcao)"> +
+                            </button>
+                        </span>
+                    </td>
+
+                    <td>{{ opcao.SERIE }}</td>
+                    <td>{{ opcao.STRIKE }} </td>
+                    <td>{{ opcao.PREMIO }}</td>
+
                     </tr>
                 </tbody>
             </table>

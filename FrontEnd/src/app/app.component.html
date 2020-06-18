@@ -5,10 +5,17 @@
   <div>
     <app-intervalo-precos-card></app-intervalo-precos-card>
     <app-simulador></app-simulador>
-    <app-lista-carteiras [carteiras]="carteiras"></app-lista-carteiras>
-    <app-lista-operacoes [operacoes]="operacoes"></app-lista-operacoes>
+    <td>
+      <app-lista-carteiras [carteiras]="carteiras"></app-lista-carteiras>
+    </td>
+    <td>
+      <app-simulador></app-simulador>
+    </td>
+    <td>
+      <app-lista-operacoes [operacoes]="operacoes"></app-lista-operacoes>
+    </td>
   </div>
 
-
+  <app-tabela-opcoes></app-tabela-opcoes>
 
 </body>
