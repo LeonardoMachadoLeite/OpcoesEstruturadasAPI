@@ -38,6 +38,7 @@ namespace OpcoesEstruturadas.model
             }
             else
             {
+                Console.WriteLine(date);
                 throw new Exception("A data fornecida é inválida");
             }
             this.CallSymbol = CALL_SYMBOLS[this.Date.Month - 1];

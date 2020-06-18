@@ -14,11 +14,11 @@ export class SimuladorService extends BaseService{
   }
 
   getAxisX(intervaloPrecos: IntervaloPrecos) {
-    this.http.post<any>(this.urlApi + '/Simulador/IntervaloPreco', { intervaloPrecos } );
+    return this.http.post<any>(this.urlApi + '/Simulador/IntervaloPreco', { intervaloPrecos } );
   }
 
   simularCarteiras(intervaloPrecos: IntervaloPrecos, carteiras: Array<Carteira>) {
-    this.http.post<any>(this.urlApi + '/Simulador/IntervaloPreco', { intervaloPrecos, carteiras } );
+    return this.http.post<any>(this.urlApi + '/Simulador/Carteiras', { intervaloPrecos, carteiras } );
   }
 
 }

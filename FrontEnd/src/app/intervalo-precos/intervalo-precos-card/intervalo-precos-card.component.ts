@@ -1,5 +1,5 @@
 import { IntervaloPrecos } from './../../model/intervalo-precos';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-intervalo-precos-card',
@@ -8,15 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntervaloPrecosCardComponent implements OnInit {
 
-  intervalo: IntervaloPrecos = {
-    Min: 10,
-    Max: 30,
-    Step: 1
-  };
+  @Input() intervalo: IntervaloPrecos;
+  @Output() simularGrafico = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  simulate(evento) {
+    this.simularGrafico.emit(evento);
   }
 
 }

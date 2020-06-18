@@ -3,7 +3,7 @@
   <app-cabecalho></app-cabecalho>
 
   <div class="content-fluid">
-    <app-intervalo-precos-card></app-intervalo-precos-card>
+    <app-intervalo-precos-card [intervalo]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
     <td>
       <div>
 
@@ -13,7 +13,7 @@
     </td>
     <td>
       <div style="position: relative; margin-top: -180px;" >
-        <app-simulador ></app-simulador>
+        <app-simulador [data]="data"></app-simulador>
       </div>
     </td>
     <td>
