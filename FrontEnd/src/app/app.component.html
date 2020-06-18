@@ -12,7 +12,7 @@
       </div>
     </td>
     <td>
-      <div style="position: relative; margin-top: -180px;" >
+      <div style="position: relative;">
         <app-simulador [data]="data"></app-simulador>
       </div>
     </td>
@@ -24,7 +24,7 @@
       </div>
     </td>
   </div>
-
+<app-filtro-tabela></app-filtro-tabela>
   <app-tabela-opcoes [opcoes]="opcoesScrapper" (adicionarOperacao)="adicionarOperacao($event)"></app-tabela-opcoes>
 
 </body>

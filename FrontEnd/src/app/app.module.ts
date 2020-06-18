@@ -22,6 +22,7 @@ import { CarteiraItemComponent } from './carteira/carteira-item/carteira-item.co
 import { ListaCarteirasComponent } from './carteira/lista-carteiras/lista-carteiras.component';
 import { IntervaloPrecosCardComponent } from './intervalo-precos/intervalo-precos-card/intervalo-precos-card.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { FiltroTabelaComponent } from './filtro-tabela/filtro-tabela.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -36,7 +37,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     CarteiraItemComponent,
     ListaCarteirasComponent,
     IntervaloPrecosCardComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
+    FiltroTabelaComponent
   ],
   imports: [
     BrowserModule,
