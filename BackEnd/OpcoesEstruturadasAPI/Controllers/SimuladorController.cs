@@ -24,26 +24,21 @@ namespace OpcoesEstruturadasAPI.Controllers
             this.service = new SimulacaoCarteiraService();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Carteira")]
-        public  JObject GetCarteira([FromBody] JObject request)
+        public  JObject SimularCarteira([FromBody] JObject request)
         {
             return this.service.SimularCarteira(request);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Carteiras")]
-        public JArray GetCarteiras([FromBody] JArray request)
+        public JArray SimularCarteiras([FromBody] JObject request)
         {
-            JArray simulacoes = new JArray();
-            foreach (JObject carteira in request)
-            {
-                simulacoes.Add(this.service.SimularCarteira(carteira));
-            }
-            return simulacoes;
+            return this.service.SimularCarteiras(request);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("IntervaloPreco")]
         public  JArray GetIntervaloPreco([FromBody] JObject request)
         {

@@ -12,15 +12,19 @@ export class OpcoesService extends BaseService {
         super(http);
     }
 
+    getVencimentos() {
+      return this.http.get<Array<string>>(this.urlApi + '/Scrapper/Vencimentos/Call');
+    }
+
     obterOpcoes(tipo: string, vencimento: string) {
-      const httpOptions = {
+      /*const httpOptions = {
          headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': 'http://localhost:56972'
         })
-      };
+      };*/
       const body = {tipo, vencimento};
-      const request = this.http.post<Array<OpcaoScrapper>>(this.urlApi + '/Scrapper/Opcoes', body, httpOptions);
+      const request = this.http.post<Array<OpcaoScrapper>>(this.urlApi + '/Scrapper/Opcoes', body/*, httpOptions*/);
       return request;
     }
 
