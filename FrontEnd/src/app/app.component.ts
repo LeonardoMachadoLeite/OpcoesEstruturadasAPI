@@ -1,3 +1,5 @@
+import { Acao } from './model/acao';
+import { OpcaoScrapper } from './model/opcao-scrapper.model';
 import { Carteira } from './model/carteira';
 import { Component } from '@angular/core';
 import { Operacao } from './model/operacao';
@@ -39,12 +41,14 @@ export class AppComponent {
     Nome: 'Carteira 2',
     Operacoes: [this.operacao2]
   };
+
+  title = 'Simulador de Opções Estruturadas';
+  DireitoCompraVenda: number;
+  StockTicker: string;
   carteiras: Array<Carteira> = [
     this.carteira1,
     this.carteira2
   ];
-
-  title = 'Simulador de Opções Estruturadas';
   operacoes: Array<Operacao> = [];
 
   constructor() {
@@ -59,6 +63,26 @@ export class AppComponent {
 
   editarCarteira(obj: any) {
     this.operacoes = obj.carteira.Operacoes;
+  }
+
+  adicionarOperacao(evento) {
+    const opcao: OpcaoScrapper = evento.opcao;
+    const ativo: Opcao = {
+      Opcao: 1,
+      StockTicker: this.StockTicker,
+      Ticker: opcao.SERIE,
+      Deadline: opcao.VENCIMENTO,
+      Strike: this.cvtString(opcao.STRIKE),
+      DireitoCompraVenda: this.DireitoCompraVenda,
+      TipoOpcao: 0
+    };
+    let operacao: Operacao = {
+      Tipo: 1,
+      Quantidade: 0,
+      Preco: this.cvtString(opcao.PREMIO),
+      Ativo: ativo
+    };
+    this.operacoes.push(operacao);
   }
 
 }
