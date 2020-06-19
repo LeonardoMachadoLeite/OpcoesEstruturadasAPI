@@ -3,7 +3,7 @@
   <app-cabecalho></app-cabecalho>
 
   <div class="content-fluid">
-    <app-intervalo-precos-card [intervalo]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
+    <app-intervalo-precos-card [(intervalo)]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
     <td>
       <div>
 
@@ -19,7 +19,8 @@
     <td>
       <div>
 
-        <app-lista-operacoes style="margin-top:5%; float: right;" [operacoes]="operacoes"></app-lista-operacoes>
+        <app-lista-operacoes style="margin-top:5%; float: right;" [operacoes]="carteiraAtiva.Operacoes"
+          (SetOperacoes)="setOperacoes($event)"></app-lista-operacoes>
 
       </div>
     </td>

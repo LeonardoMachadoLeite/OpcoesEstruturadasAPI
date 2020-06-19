@@ -18,17 +18,19 @@ namespace ScrapperOpcoesAPI.Controllers
 
         [HttpGet]
         [Route("Vencimentos/Call")]
-        public async Task<JArray> VencimentosCall()
+        public async Task<JArray> VencimentosCall([FromBody] JObject body)
         {
-            ScrapperOpcoesService service = new ScrapperOpcoesService("https://statusinvest.com.br/opcoes/petr4");
+            string ticker = body.Value<string>("ticker").ToLower();
+            ScrapperOpcoesService service = new ScrapperOpcoesService(String.Format("https://statusinvest.com.br/opcoes/{0}", ticker));
             return await service.GetVencimentosCall();
         }
 
         [HttpGet]
         [Route("Vencimentos/Put")]
-        public async Task<JArray> VencimentosPut()
+        public async Task<JArray> VencimentosPut([FromBody] JObject body)
         {
-            ScrapperOpcoesService service = new ScrapperOpcoesService("https://statusinvest.com.br/opcoes/petr4");
+            string ticker = body.Value<string>("ticker").ToLower();
+            ScrapperOpcoesService service = new ScrapperOpcoesService(String.Format("https://statusinvest.com.br/opcoes/{0}", ticker));
             return await service.GetVencimentosPut();
         }
 
@@ -36,7 +38,8 @@ namespace ScrapperOpcoesAPI.Controllers
         [Route("Opcoes")]
         public async Task<JArray> Opcoes([FromBody] JObject body)
         {
-            ScrapperOpcoesService service = new ScrapperOpcoesService("https://statusinvest.com.br/opcoes/petr4");
+            string ticker = body.Value<string>("ticker").ToLower();
+            ScrapperOpcoesService service = new ScrapperOpcoesService(String.Format("https://statusinvest.com.br/opcoes/{0}", ticker));
             JObject opcoes = await service.GetOpcoes();
             return opcoes.Value<JObject>(body.Value<string>("tipo")).Value<JArray>(body.Value<string>("vencimento"));
         }

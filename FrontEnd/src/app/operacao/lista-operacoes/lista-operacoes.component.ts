@@ -12,15 +12,16 @@ export class ListaOperacoesComponent implements OnInit {
   @Input() StockTicker: string;
   @Input() operacoes: Array<Operacao> = [];
 
+  @Output() SetOperacoes = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   removerOperacao(evento) {
-    console.log('remover operacao');
     this.operacoes = this.operacoes.filter(item => item.Ativo !== evento.operacao.Ativo);
-    console.log(this.operacoes);
+    this.SetOperacoes.emit({ Operacoes: this.operacoes });
   }
 
 }

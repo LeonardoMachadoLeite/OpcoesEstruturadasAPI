@@ -27,14 +27,30 @@ export class AppComponent {
   operacao1: Operacao = {
     Tipo: 1,
     Quantidade: 100,
-    Preco: 10.0,
-    Ativo: this.opcao
+    Preco: 0.7,
+    Ativo: {
+      Opcao: 1,
+      StockTicker: 'PETR4',
+      Ticker: 'PETRS189',
+      Deadline: '20/07/2020',
+      Strike: 18.9,
+      DireitoCompraVenda: -1,
+      TipoOpcao: 1
+    }
   };
   operacao2: Operacao = {
     Tipo: 1,
     Quantidade: -100,
-    Preco: 20.0,
-    Ativo: this.opcao
+    Preco: 0.7,
+    Ativo: {
+      Opcao: 1,
+      StockTicker: 'PETR4',
+      Ticker: 'PETRS189',
+      Deadline: '20/07/2020',
+      Strike: 18.9,
+      DireitoCompraVenda: -1,
+      TipoOpcao: 1
+    }
   };
   carteira1: Carteira = {
     Nome: 'Carteira 1',
@@ -47,21 +63,24 @@ export class AppComponent {
 
   title = 'Simulador de Opções Estruturadas';
   intervalo: IntervaloPrecos = {
-    Min: 10,
-    Max: 30,
+    Min: 17,
+    Max: 22,
     Step: 1
   };
-  DireitoCompraVenda: number = 0;
-  StockTicker: string = 'PETR4';
-  Vencimento: string = '20/07/2020';
+
+  DireitoCompraVenda = 0;
+  StockTicker = 'PETR4';
+  Vencimento = '20/07/2020';
+
   listaVencimentos = [];
-  listaTickers = [this.StockTicker];
-  listaTipos = [];
+  listaTickers = ['PETR4', 'ITUB4', 'CSNA3'];
+  TiposOpcoes = ['call', 'put'];
+
   carteiras: Array<Carteira> = [
     this.carteira1,
     this.carteira2
   ];
-  operacoes: Array<Operacao> = this.carteira1.Operacoes;
+  carteiraAtiva: Carteira = this.carteiras[0];
   opcoesScrapper: Array<OpcaoScrapper> = [];
   chartConfig = {
     caption: 'Simulação de Estratégia de Opções',
@@ -71,7 +90,7 @@ export class AppComponent {
     showvalues: '0',
     legenditemfontsize: '15',
     legenditemfontbold: '1',
-    plottooltext: '$seriesName em R\$$label: <b>$dataValue</b>',//'<b>$dataValue</b> Tickets $seriesName on $label',
+    plottooltext: '$seriesName em R\$$label: <b>$dataValue</b>',
     theme: 'fusion'
   };
   data = {
@@ -90,27 +109,6 @@ export class AppComponent {
       {
         category: [
           {
-            label: '10'
-          },
-          {
-            label: '11'
-          },
-          {
-            label: '12'
-          },
-          {
-            label: '13'
-          },
-          {
-            label: '14'
-          },
-          {
-            label: '15'
-          },
-          {
-            label: '16'
-          },
-          {
             label: '17'
           },
           {
@@ -127,30 +125,6 @@ export class AppComponent {
           },
           {
             label: '22'
-          },
-          {
-            label: '23'
-          },
-          {
-            label: '24'
-          },
-          {
-            label: '25'
-          },
-          {
-            label: '26'
-          },
-          {
-            label: '27'
-          },
-          {
-            label: '28'
-          },
-          {
-            label: '29'
-          },
-          {
-            label: '30'
           }
         ]
       }
@@ -160,55 +134,10 @@ export class AppComponent {
         seriesname: 'Carteira 01',
         data: [
           {
-            value: '820'
-          },
-          {
-            value: '720'
-          },
-          {
-            value: '620'
-          },
-          {
-            value: '520'
-          },
-          {
-            value: '420'
-          },
-          {
-            value: '320'
-          },
-          {
-            value: '220'
-          },
-          {
             value: '120'
           },
           {
             value: '20'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '-70'
           },
           {
             value: '-70'
@@ -228,84 +157,38 @@ export class AppComponent {
         seriesname: 'Carteira 02',
         data: [
           {
-            value: '-180'
+            value: '-120'
           },
           {
-            value: '-180'
+            value: '-20'
           },
           {
-            value: '-180'
+            value: '70'
           },
           {
-            value: '-180'
+            value: '70'
           },
           {
-            value: '-180'
+            value: '70'
           },
           {
-            value: '-180'
-          },
-          {
-            value: '-180'
-          },
-          {
-            value: '-180'
-          },
-          {
-            value: '-180'
-          },
-          {
-            value: '-170'
-          },
-          {
-            value: '-70'
-          },
-          {
-            value: '30'
-          },
-          {
-            value: '130'
-          },
-          {
-            value: '230'
-          },
-          {
-            value: '330'
-          },
-          {
-            value: '430'
-          },
-          {
-            value: '530'
-          },
-          {
-            value: '630'
-          },
-          {
-            value: '730'
-          },
-          {
-            value: '830'
-          },
-          {
-            value: '930'
+            value: '70'
           }
         ]
       }
     ]
   };
-  TiposOpcoes = ['call', 'put'];
 
   constructor(private opcoesService: OpcoesService, private simuladorService: SimuladorService) {
     this.opcoesService.getVencimentos().subscribe(res => this.listaVencimentos = res);
     this.opcoesService.obterOpcoes(this.TiposOpcoes[this.DireitoCompraVenda], this.Vencimento).subscribe(res => this.opcoesScrapper = res);
   }
 
-  simular(evento) {
+  async simular(evento) {
     console.log('simular start');
-    let axisX: any;
-    this.simuladorService.getAxisX(this.intervalo).subscribe(r => axisX = r);
-    this.simuladorService.simularCarteiras(this.intervalo, this.carteiras).subscribe(r => this.atualizarGrafico(axisX, r));
+    this.simuladorService.getAxisX(this.intervalo).subscribe(x =>
+      this.simuladorService.simularCarteiras(this.intervalo, this.carteiras)
+      .subscribe(y => this.atualizarGrafico(x, y)));
   }
 
   private atualizarGrafico(axisX, axisY) {
@@ -326,7 +209,11 @@ export class AppComponent {
   }
 
   editarCarteira(obj: any) {
-    this.operacoes = obj.carteira.Operacoes;
+    this.carteiraAtiva = obj.carteira;
+  }
+
+  setOperacoes(obj: any) {
+    this.carteiraAtiva.Operacoes = obj.Operacoes;
   }
 
   adicionarOperacao(evento) {
@@ -347,7 +234,11 @@ export class AppComponent {
       Preco: this.cvtString(opcao.PREMIO),
       Ativo: ativo
     };
-    this.operacoes.push(operacao);
+    this.carteiraAtiva.Operacoes.push(operacao);
+  }
+
+  setIntervalo(evento) {
+    this.intervalo = evento.intervalo;
   }
 
 }

@@ -5,12 +5,12 @@
     </div>
     <div class="card-body">
       <label class="hint">Mínimo: </label>
-      <input class="campo-intervalo" [value]="intervalo.Min" name="Mínimo">
+      <input class="campo-intervalo" [(ngModel)]="intervalo.Min" name="Mínimo">
       <label class="hint">Máximo: </label>
-      <input class="campo-intervalo" [value]="intervalo.Max" name="Máximo">
+      <input class="campo-intervalo" [(ngModel)]="intervalo.Max" name="Máximo">
       <label class="hint">Passo: </label>
-      <input class="campo-intervalo" [value]="intervalo.Step" name="Passo">
-      <button class="btn btn-primary hint" style="float: right;" (click)="simulate($event)">Simular</button>
+      <input class="campo-intervalo" [(ngModel)]="intervalo.Step" name="Passo">
+      <button class="btn btn-primary hint" (click)="simulate($event)">Simular</button>
     </div>
   </div>
 </div>
