@@ -12,7 +12,7 @@
             <table class="table table-hover">
                 <thead>
                   <tr><app-filtro-tabela
-                    [listaTickers]="listaTickers" [listaTipos]="listaTipos" [listaVencimentos]="listaVencimentos"
+                    (BuscarEvento)="buscar($event)"
                     ></app-filtro-tabela></tr>
                     <tr>
                         <th>Actions</th>

@@ -19,13 +19,12 @@
     <td>
       <div>
 
-        <app-lista-operacoes style="margin-top:5%; float: right;" [operacoes]="carteiraAtiva.Operacoes"
+        <app-lista-operacoes style="margin-top:5%; float: right;" [carteira]="carteiraAtiva"
           (SetOperacoes)="setOperacoes($event)"></app-lista-operacoes>
 
       </div>
     </td>
   </div>
-  <app-tabela-opcoes [opcoes]="opcoesScrapper" (adicionarOperacao)="adicionarOperacao($event)"
-    [listaTickers]="listaTickers" [listaTipos]="TiposOpcoes" [listaVencimentos]="listaVencimentos"></app-tabela-opcoes>
+  <app-tabela-opcoes (adicionarOperacao)="adicionarOperacao($event)"></app-tabela-opcoes>
 
 </body>

@@ -1,5 +1,13 @@
-<div>
-  <div *ngFor="let operacao of operacoes" >
-    <app-operacao-controller [StockTicker]="StockTicker" (removerOperacao)="removerOperacao($event)" [operacao]="operacao"></app-operacao-controller>
+<div class="card">
+  <div class="card-header">
+    <label>{{ carteira.Nome }}</label>
+  </div>
+  <div class="card-body">
+    <div *ngFor="let operacao of carteira.Operacoes" >
+      <app-operacao-controller [StockTicker]="StockTicker" (removerOperacao)="removerOperacao($event)" [operacao]="operacao"></app-operacao-controller>
+    </div>
+  </div>
+  <div class="card-footer">
+    <label>R$ 40.00</label>
   </div>
 </div>

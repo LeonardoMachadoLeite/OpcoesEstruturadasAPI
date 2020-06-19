@@ -22,7 +22,6 @@ export class OperacaoControllerComponent implements OnInit {
     TipoOpcao: 1
   };
   @Input() operacao: Operacao = {
-    Tipo: 1,
     Quantidade: 0,
     Preco: 40.0,
     Ativo: this.opcao

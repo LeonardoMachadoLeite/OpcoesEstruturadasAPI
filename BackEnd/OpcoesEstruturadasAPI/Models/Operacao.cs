@@ -6,23 +6,15 @@ using System.Text;
 namespace OpcoesEstruturadas.model
 {
 
-    public enum TipoOperacao
-    {
-        Compra = 1,
-        Venda = -1
-    }
-
     public class Operacao
     {
 
-        public TipoOperacao Tipo;
         public Acao Ativo { get; }
         public int Quantidade { get; set; }
         public double Preco { get; set; }
 
         public Operacao(JObject json)
         {
-            this.Tipo = (TipoOperacao) Enum.ToObject(typeof(TipoOperacao), json.Value<int>("Tipo"));
             this.Quantidade = json.Value<int>("Quantidade");
             this.Preco = json.Value<double>("Preco");
 
@@ -45,9 +37,8 @@ namespace OpcoesEstruturadas.model
             }
             
         }
-        public Operacao(TipoOperacao tipo, Acao ativo)
+        public Operacao(Acao ativo)
         {
-            this.Tipo = tipo;
             this.Ativo = ativo;
         }
 
@@ -66,8 +57,7 @@ namespace OpcoesEstruturadas.model
         public double Resultado(double SpotPrice)
         {
             return Math.Round(
-                this.Ativo.IntrinsicValue(SpotPrice) * 
-                this.Quantidade * ((int) this.Tipo), 2);
+                this.Ativo.IntrinsicValue(SpotPrice) * this.Quantidade, 2);
         }
 
     }

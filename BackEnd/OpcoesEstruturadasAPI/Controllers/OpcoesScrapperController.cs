@@ -16,7 +16,7 @@ namespace ScrapperOpcoesAPI.Controllers
     public class OpcoesScrapperController : ControllerBase
     {
 
-        [HttpGet]
+        [HttpPost]
         [Route("Vencimentos/Call")]
         public async Task<JArray> VencimentosCall([FromBody] JObject body)
         {
@@ -25,7 +25,7 @@ namespace ScrapperOpcoesAPI.Controllers
             return await service.GetVencimentosCall();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Vencimentos/Put")]
         public async Task<JArray> VencimentosPut([FromBody] JObject body)
         {

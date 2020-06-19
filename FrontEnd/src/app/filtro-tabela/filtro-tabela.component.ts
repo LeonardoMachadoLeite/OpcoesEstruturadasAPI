@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { FiltroOpcoes } from './../model/filtro-opcoes';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OpcoesService } from '../services/opcoes.service';
 
@@ -10,21 +11,31 @@ import { OpcoesService } from '../services/opcoes.service';
 })
 export class FiltroTabelaComponent implements OnInit {
 
-  @Input() listaTipos: Array<string>;
-  @Input() listaVencimentos: Array<string>;
-  @Input() listaTickers: Array<string>;
+  listaTipos: Array<string> = ['call', 'put'];
+  listaVencimentos: Array<string>;
+  listaTickers: Array<string> = ['PETR4', 'ITUB4', 'CSNA3'];
 
-  tipo: string = 'call';
-  vencimento: string = '20/07/2020';
+  filtro: FiltroOpcoes = {
+    ticker: this.listaTickers[0],
+    tipo: this.listaTipos[0],
+    vencimento: '20/07/2020'
+  };
+  @Output() BuscarEvento = new EventEmitter();
 
-  options = []
+  private service: OpcoesService;
 
-  constructor(private http: HttpClient, private opcoesService: OpcoesService) { }
+  constructor(private http: HttpClient, private opcoesService: OpcoesService) {}
 
+  ngOnInit() {
+    this.opcoesService.getVencimentos('PETR4').subscribe(res => {
+      this.listaVencimentos = res;
+      this.filtro.vencimento = this.listaVencimentos[0];
+    } );
+  }
 
-
-  ngOnInit(): void {
-    this.opcoesService.obterOpcoes(this.tipo, this.vencimento).subscribe(data => this.options = data)
+  buscar(evento) {
+    console.log(this.filtro);
+    this.BuscarEvento.emit({ filtro: this.filtro });
   }
 
 }

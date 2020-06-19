@@ -1,3 +1,4 @@
+import { FiltroOpcoes } from './../model/filtro-opcoes';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base.service';
@@ -12,20 +13,18 @@ export class OpcoesService extends BaseService {
         super(http);
     }
 
-    getVencimentos() {
-      return this.http.get<Array<string>>(this.urlApi + '/Scrapper/Vencimentos/Call');
+    getVencimentos(ticker: string) {
+      return this.http.post<Array<string>>(this.urlApi + '/Scrapper/Vencimentos/Call', { ticker });
     }
 
-    obterOpcoes(tipo: string, vencimento: string) {
+    obterOpcoes(body: FiltroOpcoes) {
       /*const httpOptions = {
          headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': 'http://localhost:56972'
         })
       };*/
-      const body = {tipo, vencimento};
-      const request = this.http.post<Array<OpcaoScrapper>>(this.urlApi + '/Scrapper/Opcoes', body/*, httpOptions*/);
-      return request;
+      return this.http.post<Array<OpcaoScrapper>>(this.urlApi + '/Scrapper/Opcoes', body);;
     }
 
 }

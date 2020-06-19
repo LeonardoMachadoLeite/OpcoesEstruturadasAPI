@@ -24,15 +24,15 @@ namespace OpcoesEstruturadas.model
             return this.Operacoes.Count - 1;
         }
 
-        public int AddOperacao(TipoOperacao tipo, Acao ativo)
+        public int AddOperacao(Acao ativo)
         {
-            return this.AddOperacao(new Operacao(tipo, ativo));
+            return this.AddOperacao(new Operacao(ativo));
         }
 
         public int AddAndMountOperacao(
-            TipoOperacao tipo, Acao ativo, int qtd, double preco)
+            Acao ativo, int qtd, double preco)
         {
-            Operacao operacao = new Operacao(tipo, ativo);
+            Operacao operacao = new Operacao(ativo);
             operacao.Montar(qtd, preco);
             return this.AddOperacao(operacao);
         }

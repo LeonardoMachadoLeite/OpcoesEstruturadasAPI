@@ -1,3 +1,4 @@
+import { Carteira } from './../../model/carteira';
 import { OperacaoControllerComponent } from './../operacao-controller/operacao-controller.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Operacao } from 'src/app/model/operacao';
@@ -10,7 +11,7 @@ import { Operacao } from 'src/app/model/operacao';
 export class ListaOperacoesComponent implements OnInit {
 
   @Input() StockTicker: string;
-  @Input() operacoes: Array<Operacao> = [];
+  @Input() carteira: Carteira;
 
   @Output() SetOperacoes = new EventEmitter();
 
@@ -20,8 +21,8 @@ export class ListaOperacoesComponent implements OnInit {
   }
 
   removerOperacao(evento) {
-    this.operacoes = this.operacoes.filter(item => item.Ativo !== evento.operacao.Ativo);
-    this.SetOperacoes.emit({ Operacoes: this.operacoes });
+    this.carteira.Operacoes = this.carteira.Operacoes.filter(item => item.Ativo !== evento.operacao.Ativo);
+    this.SetOperacoes.emit({ Operacoes: this.carteira });
   }
 
 }

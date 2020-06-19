@@ -25,7 +25,6 @@ export class AppComponent {
     TipoOpcao: 1
   };
   operacao1: Operacao = {
-    Tipo: 1,
     Quantidade: 100,
     Preco: 0.7,
     Ativo: {
@@ -39,7 +38,6 @@ export class AppComponent {
     }
   };
   operacao2: Operacao = {
-    Tipo: 1,
     Quantidade: -100,
     Preco: 0.7,
     Ativo: {
@@ -68,7 +66,6 @@ export class AppComponent {
     Step: 1
   };
 
-  DireitoCompraVenda = 0;
   StockTicker = 'PETR4';
   Vencimento = '20/07/2020';
 
@@ -81,7 +78,6 @@ export class AppComponent {
     this.carteira2
   ];
   carteiraAtiva: Carteira = this.carteiras[0];
-  opcoesScrapper: Array<OpcaoScrapper> = [];
   chartConfig = {
     caption: 'Simulação de Estratégia de Opções',
     yaxisname: 'Resultado',
@@ -179,10 +175,7 @@ export class AppComponent {
     ]
   };
 
-  constructor(private opcoesService: OpcoesService, private simuladorService: SimuladorService) {
-    this.opcoesService.getVencimentos().subscribe(res => this.listaVencimentos = res);
-    this.opcoesService.obterOpcoes(this.TiposOpcoes[this.DireitoCompraVenda], this.Vencimento).subscribe(res => this.opcoesScrapper = res);
-  }
+  constructor(private opcoesService: OpcoesService, private simuladorService: SimuladorService) {}
 
   async simular(evento) {
     console.log('simular start');
@@ -202,12 +195,6 @@ export class AppComponent {
     };
   }
 
-  cvtString(str: string) {
-    let res = str.substring(3);
-    res = res.replace(',', '.');
-    return Number(res);
-  }
-
   editarCarteira(obj: any) {
     this.carteiraAtiva = obj.carteira;
   }
@@ -217,24 +204,7 @@ export class AppComponent {
   }
 
   adicionarOperacao(evento) {
-    let opcao: OpcaoScrapper = evento.opcao;
-    console.log(opcao);
-    let ativo: Opcao = {
-      Opcao: 1,
-      StockTicker: this.StockTicker,
-      Ticker: opcao.SERIE,
-      Deadline: opcao.VENCIMENTO,
-      Strike: this.cvtString(opcao.STRIKE),
-      DireitoCompraVenda: this.DireitoCompraVenda,
-      TipoOpcao: 0
-    };
-    let operacao: Operacao = {
-      Tipo: 1,
-      Quantidade: 0,
-      Preco: this.cvtString(opcao.PREMIO),
-      Ativo: ativo
-    };
-    this.carteiraAtiva.Operacoes.push(operacao);
+    this.carteiraAtiva.Operacoes.push(evento.operacao);
   }
 
   setIntervalo(evento) {
