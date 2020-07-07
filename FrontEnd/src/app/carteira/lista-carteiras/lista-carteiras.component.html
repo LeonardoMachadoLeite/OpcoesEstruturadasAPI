@@ -1,6 +1,11 @@
-<div class="card-body">
-  <div *ngFor="let carteira of carteiras">
-    <app-carteira-item (RemoverCarteira)="removerCarteira($event)"
-      (GetCarteira)="getCarteira($event)" [carteira]="carteira"></app-carteira-item>
+<div class="card lista">
+  <div class="card-header">
+    <h4>Estratégias</h4>
+  </div>
+  <div class="card-body lista-carteiras">
+    <div *ngFor="let carteira of carteiras">
+      <app-carteira-item (RemoverCarteira)="removerCarteira($event)"
+        (GetCarteira)="getCarteira($event)" [carteira]="carteira"></app-carteira-item>
+    </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-header">
-    <label>{{ carteira.Nome }}</label>
+    <h4>{{ carteira.Nome }}</h4>
   </div>
-  <div class="card-body">
+  <div class="card-body lista-operacoes">
     <div *ngFor="let operacao of carteira.Operacoes" >
       <app-operacao-controller [StockTicker]="StockTicker" (removerOperacao)="removerOperacao($event)" [operacao]="operacao"></app-operacao-controller>
     </div>

@@ -2,29 +2,40 @@
 
   <app-cabecalho></app-cabecalho>
 
-  <div class="content-fluid">
-    <app-intervalo-precos-card [(intervalo)]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
-    <td>
-      <div>
+  <app-intervalo-precos-card [(intervalo)]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
 
-        <app-lista-carteiras style="float: left;" (GetCarteira)="editarCarteira($event)" [carteiras]="carteiras"></app-lista-carteiras>
+  <table class="linha content-fluid">
 
-      </div>
-    </td>
-    <td>
-      <div style="position: relative;">
-        <app-simulador [data]="data"></app-simulador>
-      </div>
-    </td>
-    <td>
-      <div>
+    <tr class="linha">
 
-        <app-lista-operacoes style="margin-top:5%; float: right;" [carteira]="carteiraAtiva"
-          (SetOperacoes)="setOperacoes($event)"></app-lista-operacoes>
+      <td class="carteiras">
+        <div>
 
-      </div>
-    </td>
+          <app-lista-carteiras (GetCarteira)="editarCarteira($event)" [carteiras]="carteiras"></app-lista-carteiras>
+
+        </div>
+      </td>
+      <td>
+
+        <div class="grafico">
+          <app-simulador [data]="data"></app-simulador>
+        </div>
+
+      </td>
+      <td class="operacoes">
+
+        <div >
+          <app-lista-operacoes [carteira]="carteiraAtiva"
+            (SetOperacoes)="setOperacoes($event)"></app-lista-operacoes>
+        </div>
+
+      </td>
+
+    </tr>
+
+  </table>
+  <div class="tabela">
+    <app-tabela-opcoes (adicionarOperacao)="adicionarOperacao($event)"></app-tabela-opcoes>
   </div>
-  <app-tabela-opcoes (adicionarOperacao)="adicionarOperacao($event)"></app-tabela-opcoes>
 
 </body>

@@ -8,7 +8,7 @@
 
 .op-item{
   width: 300px;
-  margin-left: 50%;
+  padding: 0px;
 }
 
 .remover{
@@ -29,4 +29,8 @@
   width: 40px;
   font-size: 18px;
   border-radius: 10px;
+}
+
+.titulo{
+  font-weight: bold;
 }

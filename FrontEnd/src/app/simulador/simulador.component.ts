@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SimuladorComponent implements OnInit {
 
-  @Input() height: number = 350;
-  @Input() width: number = 650;
+  @Input() height: number = 300;
+  @Input() width: number = 900;
 
   @Input() data;
   constructor() { }
