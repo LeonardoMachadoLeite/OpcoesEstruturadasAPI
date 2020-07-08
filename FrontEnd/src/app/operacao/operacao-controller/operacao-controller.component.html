@@ -7,6 +7,8 @@
       <label>Strike: R$ {{ cvtOpcao(operacao.Ativo).Strike }}</label>
       <br>
       <label>Preço: R$ {{ operacao.Preco }}</label>
+      <br>
+      <label>Custo: R$ {{ operacao.Preco * operacao.Quantidade }}</label>
     </div>
 
     <div class="card-footer">

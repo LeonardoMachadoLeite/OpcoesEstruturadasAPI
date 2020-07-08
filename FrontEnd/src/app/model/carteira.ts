@@ -3,5 +3,6 @@ export class Carteira {
 
   Nome: string;
   Operacoes: Array<Operacao>;
+  Custo: number;
 
 }

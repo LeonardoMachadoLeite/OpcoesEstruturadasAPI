@@ -52,11 +52,13 @@ export class AppComponent {
   };
   carteira1: Carteira = {
     Nome: 'Carteira 1',
-    Operacoes: [this.operacao1]
+    Operacoes: [this.operacao1],
+    Custo: -70
   };
   carteira2: Carteira = {
     Nome: 'Carteira 2',
-    Operacoes: [this.operacao2]
+    Operacoes: [this.operacao2],
+    Custo: 70
   };
 
   title = 'Simulador de Opções Estruturadas';

@@ -25,4 +25,12 @@ export class ListaOperacoesComponent implements OnInit {
     this.SetOperacoes.emit({ Operacoes: this.carteira });
   }
 
+  calcularCustoCarteira(evento) {
+    let custo = 0;
+    this.carteira.Operacoes.forEach(op => {
+      custo += (op.Preco * op.Quantidade);
+    });
+    this.carteira.Custo = custo * -1;
+  }
+
 }

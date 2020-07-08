@@ -4,10 +4,11 @@
   </div>
   <div class="card-body lista-operacoes">
     <div *ngFor="let operacao of carteira.Operacoes" >
-      <app-operacao-controller [StockTicker]="StockTicker" (removerOperacao)="removerOperacao($event)" [operacao]="operacao"></app-operacao-controller>
+      <app-operacao-controller [StockTicker]="StockTicker" (atualizarCusto)="calcularCustoCarteira($event)"
+        (removerOperacao)="removerOperacao($event)" [operacao]="operacao"></app-operacao-controller>
     </div>
   </div>
   <div class="card-footer">
-    <label>R$ 40.00</label>
+    <label>R$ {{ carteira.Custo }}</label>
   </div>
 </div>

@@ -26,6 +26,8 @@ export class OperacaoControllerComponent implements OnInit {
     Preco: 40.0,
     Ativo: this.opcao
   };
+
+  @Output() atualizarCusto = new EventEmitter();
   @Output() removerOperacao = new EventEmitter();
 
   constructor() { }
@@ -34,10 +36,12 @@ export class OperacaoControllerComponent implements OnInit {
 
   onClickMais() {
     this.operacao.Quantidade += 100;
+    this.atualizarCusto.emit();
   }
 
   onClickMenos() {
     this.operacao.Quantidade -= 100;
+    this.atualizarCusto.emit();
   }
 
   onClickRemover(evento) {
