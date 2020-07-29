@@ -9,6 +9,8 @@ export class CabecalhoComponent implements OnInit {
 
   constructor() { }
 
+  logoPath = 'assets\\cover-sm.png';
+
   ngOnInit(): void {
   }
 

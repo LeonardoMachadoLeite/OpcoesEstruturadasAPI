@@ -57,7 +57,25 @@ export class TabelaOpcoesComponent implements OnInit {
 
   buscar(evento) {
     this.filtro = evento.filtro;
-    this.opcoesService.obterOpcoes(evento.filtro).subscribe(res => this.opcoes = res);
+    this.opcoesService.obterOpcoes(evento.filtro).subscribe(res => this.opcoes = this.sortOpcoes(res));
+  }
+
+  sortOpcoes(res: OpcaoScrapper[]) {
+    const sortedArray: OpcaoScrapper[] = res.sort((obj1, obj2) => {
+      const strike1: Number = this.cvtString(obj1.STRIKE);
+      const strike2: Number = this.cvtString(obj2.STRIKE);
+
+      if (strike1 > strike2) {
+          return 1;
+      }
+
+      if (strike1 < strike2) {
+          return -1;
+      }
+
+      return 0;
+    });
+    return sortedArray;
   }
 
   cvtString(str: string) {

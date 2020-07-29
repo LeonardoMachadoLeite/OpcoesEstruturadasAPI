@@ -1,7 +1,24 @@
 .lista-carteiras{
   padding: 0px;
+  height: 312px;
+}
+
+.campo-nome{
+  width: 200px;
 }
 
 .lista{
   margin-top: 0px;
+}
+
+.titulo-cartao{
+  height: 65px;
+}
+
+.adicionar-btn{
+  float: right;
+  text-align: center;
+  width: 40px;
+  font-size: 18px;
+  border-radius: 10px;
 }

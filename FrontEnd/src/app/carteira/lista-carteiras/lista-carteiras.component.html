@@ -1,5 +1,5 @@
 <div class="card lista">
-  <div class="card-header">
+  <div class="titulo-cartao card-header">
     <h4>Estratégias</h4>
   </div>
   <div class="card-body lista-carteiras">
@@ -7,5 +7,9 @@
       <app-carteira-item (RemoverCarteira)="removerCarteira($event)"
         (GetCarteira)="getCarteira($event)" [carteira]="carteira"></app-carteira-item>
     </div>
+  </div>
+  <div class="card-footer">
+    <input class="campo-nome">
+    <button class="btn btn-success adicionar-btn" >+</button>
   </div>
 </div>

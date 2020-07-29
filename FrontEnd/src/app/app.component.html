@@ -2,8 +2,6 @@
 
   <app-cabecalho></app-cabecalho>
 
-  <app-intervalo-precos-card [(intervalo)]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
-
   <table class="linha content-fluid">
 
     <tr class="linha">
@@ -16,6 +14,8 @@
         </div>
       </td>
       <td>
+
+        <app-intervalo-precos-card class="intervalo" [(intervalo)]="intervalo" (simularGrafico)="simular($event)"></app-intervalo-precos-card>
 
         <div class="grafico">
           <app-simulador [data]="data"></app-simulador>
